@@ -4,14 +4,19 @@ file_path_spec = 'build-x86/tee.cdl'
 file_path_header = 'projects/camkes/apps/tee/include/buffer.h'
 ta_name = 'ta'
 
-keyword_start_caps = f'}}\npt_{ta_name}_group_bin'
+keyword_frame = f'{ta_name}_group_bin'
+keyword_code = f'CDL_FrameFill_FileData "{keyword_frame}"'
+
+def findall(p, s):
+    i = s.find(p)
+    while i != -1:
+        yield i
+        i = s.find(p, i+1)
 
 with open(file_path_spec, 'r') as f:
     spec = f.read()
 
-start = spec.find(keyword_start_caps)
-end = start + spec[start+1:].find('}')
-ta_code_page_count = spec[start:end].count('(RX)')
+ta_code_page_count = len([i for i in findall(keyword_code, spec)])
 
 print(':: Found {} executable pages for TA "{}"'.format(ta_code_page_count, ta_name))
 
