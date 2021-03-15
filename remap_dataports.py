@@ -1,7 +1,12 @@
 #!/bin/python3
 import os
+import argparse
 
-file_path = 'capdl_spec.c'
+parser = argparse.ArgumentParser(description='Script to map TA code pages into Attestation component\'s VSpace')
+parser.add_argument('-s', '--spec', help='File path for C representation of CapDL specification', required=True)
+args = parser.parse_args()
+
+file_path = args.spec
 ta_name = 'ta'
 connection_name = 'ta_binary'
 

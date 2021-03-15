@@ -1,7 +1,13 @@
 #!/bin/python3
+import argparse
 
-file_path_spec = 'build-x86/tee.cdl'
-file_path_header = 'projects/camkes/apps/tee/include/buffer.h'
+parser = argparse.ArgumentParser(description='Script to resize the dataport shared between TA and Attestation based on true binary size of the TA')
+parser.add_argument('-s', '--spec', help='File path for CapDL specification', required=True)
+parser.add_argument('-d', '--header', help='File path for C header specifying size of the dataport', required=True)
+args = parser.parse_args()
+
+file_path_spec = args.spec
+file_path_header = args.header
 ta_name = 'ta'
 
 keyword_frame = f'{ta_name}_group_bin'
