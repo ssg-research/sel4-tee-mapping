@@ -25,7 +25,7 @@ ninja
 
 echo ":: Resizing dataports"
 
-python3 resize_dataports.py --spec $(pwd)/tee.cdl --header $(pwd)/../projects/camkes/apps/tee/include/buffer.h 
+python3 resize_dataports.py --spec $(pwd)/tee.cdl --header $(pwd)/../projects/camkes/apps/tee/components/include/buffer.h
 
 echo ":: Running build (to generate new spec with correct number of dataport frames)"
 
