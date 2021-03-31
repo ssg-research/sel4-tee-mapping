@@ -3,6 +3,8 @@
 set -e # Exit on error 
 set -u # Exit on unbound variables
 
+readonly buffer_h="apps/tee/include/buffer.h"
+
 if [ -z "$1" ]; then
 	echo "Missing argument: please provide build directory"
 	exit 1
@@ -28,7 +30,7 @@ ninja
 
 echo ":: Resizing dataports"
 
-python3 resize_dataports.py --spec "$(pwd)/tee.cdl" --header "$(pwd)/../projects/camkes/apps/tee/components/include/buffer.h"
+python3 resize_dataports.py --spec "$(pwd)/tee.cdl" --header "$(pwd)/../projects/camkes/${buffer_h}"
 
 echo ":: Running build (to generate new spec with correct number of dataport frames)"
 
