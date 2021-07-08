@@ -1,3 +1,6 @@
+# Copyright 2021 Aalto University & University of Waterloo
+# SPDX-License-Identifier: Apache-2.0
+
 #! /usr/bin/env bash
 
 set -e # Exit on error 
